@@ -1,0 +1,39 @@
+<style>
+    body {
+        background: #52c234;
+        background: -webkit-linear-gradient(to right, #061700, #52c234);
+        background: linear-gradient(to right, #061700, #52c234);
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        background-image: url(/images/spotify-background.jpeg);
+        background-size: 100%;
+    }
+    
+    div {
+        padding: 20px 0 20px 0;
+
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+
+{{#each song}}
+<div>
+    {{name}}
+</div>
+<div>
+    <audio controls>
+        <source src="{{preview_url}}">
+    </audio>
+</div>
+{{/each}}
