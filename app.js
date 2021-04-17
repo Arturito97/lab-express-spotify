@@ -26,36 +26,11 @@ const spotifyApi = new SpotifyWebAPI({
     .then(data => spotifyApi.setAccessToken(data.body['access_token']))
     .catch(error => console.log('Something went wrong when retrieving an access token', error));
 
-// Our routes go here:
-// app.get('/', async (req, res) => {
-//     res.render('home');
-// });
-
-// app.get('/artist-search', async (req, res) => {
-//     //Query param
-//     let artistName = req.query.theArtistName;
-//     let result = await spotifyApi.searchArtists(artistName);     
-//     console.log('The received data from the API: ', result.body);
-//     let artists = result.body.artists.items;
-//     artists.forEach((artist) => {
-//         console.log(artist);
-//     })
-//     res.render('artist-search-results', {artists});
-//     // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
-// })
-
-// app.get('/albums/:artistId', (req, res) => {
-//         let result = spotifyApi.getArtistAlbums(req.params.artistId).then(() => {
-//         let album = {album: result.body}
-//         res.render(`albums`, albums)
-//         // console.log('Artist albums', result.artistId.body)
-//     })
-// });
-
 
 app.get(`/`,(req,res)=>{
     res.render(`home`)
 })
+
 app.get(`/artist-search`,(req,res)=>{
     console.log(req.query)
     spotifyApi
@@ -68,6 +43,7 @@ app.get(`/artist-search`,(req,res)=>{
     })
     .catch(err => console.log('The error while searching artists occurred: ', err));
 })
+
 app.get('/albums/:artistId', (req, res, next) => {
     console.log(req.params)
     spotifyApi
